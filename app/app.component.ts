@@ -1,7 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Gender, BookingRequest} from './BookingRequest';
+
+declare var $ : JQueryStatic;
 
 @Component({
     selector: 'my-app',
-    template: '<h1>My First Angular 2 App</h1>'
+    templateUrl: '/app/app.html'
 })
-export class AppComponent { }
+export class AppComponent implements OnInit { 
+	public Gender = Gender;
+	public request : BookingRequest;
+
+	constructor() {
+	}
+
+	ngOnInit() {
+		this.request = new BookingRequest();
+	}
+}

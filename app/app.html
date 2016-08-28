@@ -1,0 +1,173 @@
+<!-- <pre>{{ request | json }}</pre>
+<pre>{{ request.getDays() | json }}</pre>
+ -->
+<h1>PetMansion</h1>
+
+<form>
+	<div class="form-group">
+		<label for="checkInDate">Fecha de entrada</label>
+		<input class="form-control" id="checkInDate" name="checkInDate" [(ngModel)]="request.checkInDate" #checkInModel="ngModel" [datepicker]="checkInModel">
+	</div>
+	<div class="form-group">
+		<label for="checkOutDate">Fecha de salida</label>
+		<input class="form-control" id="checkOutDate" name="checkOutDate" [(ngModel)]="request.checkOutDate" #checkOutModel="ngModel" [datepicker]="checkOutModel">
+	</div>
+</form>
+
+<form>
+	<h2>Informaciones de la mascota</h2>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="petName">Nombre mascota</label>
+				<input class="form-control" id="petName" name="petName" [(ngModel)]="request.petName" name="petName" placeholder="Nombre mascota" [(ngModel)]="request.petName">
+			</div>
+
+			<div class="form-group">
+				<label for="race">Raza</label>
+				<input class="form-control" id="race" name="race" [(ngModel)]="request.race" placeholder="Raza">
+			</div>
+
+			<div class="form-group">
+				<label for="color">Color</label>
+				<input class="form-control" id="color" name="color" [(ngModel)]="request.color" placeholder="Color">
+			</div>
+
+			<div class="form-group">
+				<label for="weight">Peso (lbs)</label>
+				<input type="number" class="form-control" id="weight" name="weight" [(ngModel)]="request.weight" placeholder="Peso">
+			</div>			
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="age">Edad</label>
+				<input type="number" class="form-control" id="age" name="age" [(ngModel)]="request.age" placeholder="Edad">
+			</div>
+
+			<div class="form-group">
+				<label for="gender">Género</label>
+				<select class="form-control" id="gender" name="gender" [(ngModel)]="request.gender" placeholder="Género">
+					<option value="{{ Gender[Gender.Male] }}">Masculino</option>
+					<option value="{{ Gender[Gender.Female] }}">Femenino</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="alergies">Alergias</label>
+				<textarea rows="5" class="form-control" id="alergies" name="alergies" [(ngModel)]="request.alergies"></textarea>
+			</div>			
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="medicalCondition">Condiciones médicas</label>
+    	<p class="help-block">Especificar condición, si tiene alergias, cirugías, entre otros.</p>
+		<textarea rows="3" cols="1" class="form-control" id="medicalCondition" name="medicalCondition" [(ngModel)]="request.medicalCondition" placeholder="Especificar condiciones..."></textarea>
+	</div>
+
+	<div class="form-group">
+		<label for="medications">Medicamentos</label>
+    	<p class="help-block">Especificar medicamentos que toma actualmente, su dosificación y horario.</p>
+		<textarea rows="3" cols="1" class="form-control" id="medications" name="medications" [(ngModel)]="request.medications" placeholder="Especificar condiciones..."></textarea>
+	</div>
+
+	<div class="form-group">
+		<label for="sleepPlace">Dónde duerme su mascota</label>
+		<input class="form-control" id="sleepPlace" name="sleepPlace" [(ngModel)]="request.sleepPlace" placeholder="Al lado de su cama">			
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="mealsADay">Comidas al día</label>
+				<input type="number" class="form-control" id="mealsADay" name="mealsADay" [(ngModel)]="request.mealsADay" placeholder="3 veces">
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="mealTiming">Horarios</label>
+				<input class="form-control" id="mealTiming" name="mealTiming" [(ngModel)]="request.mealTiming" placeholder="Mañana, tarde y noche">
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="curiosities">Curiosidades</label>
+		<textarea rows="3" cols="1" class="form-control" id="curiosities" name="curiosities" [(ngModel)]="request.curiosities" placeholder="Es mimado"></textarea>
+	</div>
+
+	<h2>Informaciones de los padres</h2>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="ownerFullName">Nombre y apellido</label>
+				<input class="form-control" id="ownerFullName" name="ownerFullName" [(ngModel)]="request.ownerFullName">
+			</div>
+			<div class="form-group">
+				<label for="workplace">Lugar de trabajo</label>
+				<input class="form-control" id="workplace" name="workplace" [(ngModel)]="request.workplace">
+			</div>
+			<div class="form-group">
+				<label for="mobileNumber">Tel. Móvil</label>
+				<input class="form-control" id="mobileNumber" name="mobileNumber" [(ngModel)]="request.mobileNumber">
+			</div>
+			<div class="form-group">
+				<label for="email">Correo Electrónico</label>
+				<input class="form-control" id="email" name="email" [(ngModel)]="request.email">
+			</div>			
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="nationalId">Cédula</label>
+				<input class="form-control" id="nationalId" name="nationalId" [(ngModel)]="request.nationalId">
+			</div>
+			<div class="form-group">
+				<label for="workplacePhoneNumber">Tel. Trabajo</label>
+				<input class="form-control" id="workplacePhoneNumber" name="workplacePhoneNumber" [(ngModel)]="request.workplacePhoneNumber">
+			</div>
+			<div class="form-group">
+				<label for="homePhoneNumber">Tel. Casa</label>
+				<input class="form-control" id="homePhoneNumber" name="homePhoneNumber" [(ngModel)]="request.homePhoneNumber">
+			</div>
+			<div class="form-group">
+				<label for="otherPhoneNumber">Tel. Otro</label>
+				<input class="form-control" id="otherPhoneNumber" name="otherPhoneNumber" [(ngModel)]="request.otherPhoneNumber">
+			</div>			
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="homeAddress">Dirección casa</label>
+		<input class="form-control" id="homeAddress" name="homeAddress" [(ngModel)]="request.homeAddress">
+	</div>	
+
+	<div class="form-group">
+		<label for="handedArticles">Artículos entregados</label>
+		<textarea rows="3" cols="1" class="form-control" id="handedArticles" name="handedArticles" [(ngModel)]="request.handedArticles" placeholder="Comida con medidor, periódicos, plato para agua y comida, etc..."></textarea>
+	</div>
+
+	<h2>Requisitos</h2>
+
+	<ul>
+		<li>Record de vacunas al día (debe traer <i>record</i> o copia)</li>
+		<li>Vermífugo al día</li>
+		<li>Aplicación de <i>Nexgard</i> para evitar pulgas y garrapatas según su peso el cual será cargado a su cuenta:
+			<ul>
+		    	<li>de 2 a 4 libras RD$645.00</li>
+		        <li>de 4 a 10 libras RD$750.00</li>
+		        <li>de 10 a 24 libras RD$880.00</li>
+			</ul>
+		</li>
+		<li>Forma de pago: 50% al <i>check-in</i> y 50% al <i>check-out</i></li>
+		<li>Para transferencias cuenta de ahorro Banco Popular a nombre de Brenda Rey No. 759701923</li>
+		<li>Si su mascota es recogida después de las 6:00 PM cuenta como una noche. Su mascota será entregada en el próximo día laborable.</li>
+	</ul>
+
+	<div class="row text-center">	
+		<button class="btn btn-lg btn-primary" type="submit">Enviar</button>
+	</div>
+</form>
+
+
+
