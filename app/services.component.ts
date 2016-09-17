@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  templateUrl: '/app/about.html',
+  templateUrl: '/app/services.html',
   styles: [`p { text-align: justify; }`]
 })
-export class AboutComponent { }
+export class ServicesComponent { }

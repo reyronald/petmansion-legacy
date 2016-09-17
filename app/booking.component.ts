@@ -1,19 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-
+import {EnumUtils} from './enum-utils';
+import {Wizard} from './wizard';
 import {Gender, BookingRequest} from './BookingRequest';
 
+enum BookingWizardStep {
+  StepOne,
+  StepTwo
+}
+
 @Component({
-    selector: 'my-booking',
     templateUrl: '/app/booking.html'
 })
-export class BookingComponent implements OnInit { 
-	public Gender = Gender;
-	public request : BookingRequest;
+export class BookingComponent extends Wizard<BookingWizardStep> {
+  public BookingWizardStep = BookingWizardStep;
 
-	constructor() {
-	}
+  public request : BookingRequest = new BookingRequest();
 
-	ngOnInit() {
-		this.request = new BookingRequest();
-	}
+  constructor() {
+    super(new EnumUtils(BookingWizardStep));
+  }
 }

@@ -1,0 +1,19 @@
+<h2>Requisitos</h2>
+
+<ul>
+  <li>Record de vacunas al día (debe traer récord o copia)</li>
+  <li>Vermífugo al día</li>
+  <li>Aplicación de <i>Nexgard</i> para evitar pulgas y garrapatas según su peso el cual será cargado a su cuenta:
+    <ul>
+      <li>hasta {{NexgardWeight.A}} libras {{ NexgardCost.A | dominicanCurrency}}</li>
+      <li>de {{NexgardWeight.A + 1}} a {{NexgardWeight.B}} libras {{ NexgardCost.B | dominicanCurrency}}</li>
+      <li>de {{NexgardWeight.B + 1}} a {{NexgardWeight.C}} libras {{ NexgardCost.C | dominicanCurrency}}</li>
+      <li>de {{NexgardWeight.C + 1}} en adelante {{NexgardCost.D | dominicanCurrency}}</li>
+    </ul>
+  </li>
+  <li>Forma de pago: 50% al <i>check-in</i> y 50% al <i>check-out</i></li>
+  <li>Para transferencias cuenta de ahorro Banco Popular a nombre de Brenda Rey No. 759701923</li>
+  <li>Si su mascota es recogida después de las 6:00 PM cuenta como una noche. Su mascota será entregada en el próximo día laborable.</li>
+</ul>
+
+<h3>Costo total: {{ request.getCost() | dominicanCurrency }}</h3>

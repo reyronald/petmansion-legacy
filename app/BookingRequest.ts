@@ -3,7 +3,25 @@ export enum Gender {
 	Female
 }
 
+export enum NexgardWeight {
+	A = 4, // lbs
+	B = 10, // lbs
+	C = 24, // lbs
+}
+
+export enum NexgardCost {
+	A = 645.00,
+	B = 750.00,
+	C = 880.00,
+	D = 1000.00
+}
+
 export class BookingRequest {
+	get costPerDay(): number {
+		// TODO: Send this to a config or ENV file
+		return 375.00;
+	}
+
 	public checkInDate : Date;
 	public checkOutDate : Date;
 	public petName : string;
@@ -37,5 +55,23 @@ export class BookingRequest {
 
 		let secondsDifference: number = this.checkOutDate.getTime() - this.checkInDate.getTime();
 		return Math.ceil(secondsDifference/(1000*3600*24));
+	}
+
+	public getCost(): number {
+		let nexgardCost: NexgardCost;
+
+		if (!this.weight) {
+			nexgardCost = 0;
+		} else if (this.weight <= <number>NexgardWeight.A) {
+			nexgardCost = NexgardCost.A;
+		} else if (this.weight <= <number>NexgardWeight.B) {
+			nexgardCost = NexgardCost.B;
+		} else if (this.weight <= <number>NexgardWeight.C) {
+			nexgardCost = NexgardCost.C;
+		} else {
+			nexgardCost = NexgardCost.D;
+		}
+
+		return this.getDays() * this.costPerDay + nexgardCost;
 	}
 }
