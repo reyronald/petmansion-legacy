@@ -1,33 +1,48 @@
+// https://vaadin.com/elements/-/element/vaadin-date-picker
+// http://stackoverflow.com/questions/34827334/triggering-angular2-change-detection-manually
+
 import { 
 	Directive, 
 	ElementRef, 
 	AfterViewInit, 
 	Input, 
-	OnDestroy 
+	OnDestroy
 } from '@angular/core';
-import {NgControlName} from '@angular/common';
+import {FormControlName, NgControl} from '@angular/forms';
 
 declare var $ : JQueryStatic;
 
 @Directive({ 
-	selector: '[datepicker]' 
+	selector: '[datepicker]',
 })
 export class DatepickerDirective implements AfterViewInit, OnDestroy {
-	@Input('datepicker') control : NgControlName;
+	@Input('datepicker') control : FormControlName;
 
-	private _el : any;
+	private _el : JQuery;
 
     constructor(private el: ElementRef) {
     	this._el = $(el.nativeElement);
     }
 
     ngAfterViewInit() {
-		this._el.datepicker();
+		this._el.datepicker(<JQueryUI.DatepickerOptions | DatepickerOptions>{
+			minDate: '+1m',
+    		startDate: "+1m"
+		});
 
 		var fnKeyUp = () => {
-			console.log(this._el.val());
-			if (this.control.viewModel != this._el.val()) {
-				this.control.viewToModelUpdate(new Date(this._el.val()));
+			let value = this._el.val();
+			if (this.control.model != value) {
+				this.control.viewToModelUpdate(value);
+				// this.control.viewToModelUpdate(new Date(value));
+			}
+
+			if (!!value) {
+				this._el.removeClass('ng-invalid');
+				this._el.addClass('ng-valid');
+			} else {
+				this._el.removeClass('ng-valid');
+				this._el.addClass('ng-invalid');
 			}
 		};
 

@@ -9,9 +9,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 */
 @Pipe({name: 'dominicanCurrency'})
 export class DominicanCurrencyPipe implements PipeTransform {
-  transform(value: number, exponent: string): number {
-    return 'RD$' + value.toFixed(2).replace(/./g, (c, i, a) =>
-      i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+  transform(value: number, exponent: string): string {
+    return 'RD$' + value.toFixed(2).replace(/./g, function(c, i, a) {
+    	return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
     });
   }
 }

@@ -16,14 +16,16 @@ export enum NexgardCost {
 	D = 1000.00
 }
 
+const COST_PER_DAY: number = 375.00;
+
 export class BookingRequest {
 	get costPerDay(): number {
 		// TODO: Send this to a config or ENV file
-		return 375.00;
+		return COST_PER_DAY;
 	}
 
-	public checkInDate : Date;
-	public checkOutDate : Date;
+	public checkInDate : string;
+	public checkOutDate : string;
 	public petName : string;
 	public race : string;
 	public color : string;
@@ -48,12 +50,14 @@ export class BookingRequest {
 	public homeAddress : string;
 	public handedArticles : string;
 
+	public valid: boolean = false;
+
 	public getDays(): number {
 		if (!this.checkInDate || !this.checkOutDate) {
 			return 0;
 		}
 
-		let secondsDifference: number = this.checkOutDate.getTime() - this.checkInDate.getTime();
+		const secondsDifference: number = new Date(this.checkOutDate).getTime() - new Date(this.checkInDate).getTime();
 		return Math.ceil(secondsDifference/(1000*3600*24));
 	}
 

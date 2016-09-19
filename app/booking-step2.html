@@ -1,4 +1,11 @@
+<div class="row">
+  <button class="btn btn-primary pull-left" (click)="onPrevious()">Atrás</button>
+  <!-- <button class="btn btn-primary pull-right" (click)="onNext()">Siguiente</button> -->
+</div>
+
 <h2>Requisitos</h2>
+
+<!-- <pre>{{ _bookingWizardService.request | json}}</pre> -->
 
 <ul>
   <li>Record de vacunas al día (debe traer récord o copia)</li>
@@ -16,4 +23,9 @@
   <li>Si su mascota es recogida después de las 6:00 PM cuenta como una noche. Su mascota será entregada en el próximo día laborable.</li>
 </ul>
 
-<h3>Costo total: {{ request.getCost() | dominicanCurrency }}</h3>
+<h3>Costo total: {{ _bookingWizardService.request.getCost() | dominicanCurrency }}</h3>
+
+<div class="row">
+  <button class="btn btn-primary pull-left" (click)="onPrevious()">Atrás</button>
+  <!-- <button class="btn btn-primary pull-right" (click)="onNext()">Siguiente</button> -->
+</div>
