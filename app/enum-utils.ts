@@ -1,9 +1,11 @@
-export class EnumUtils {
+export class EnumUtils {  
+	type EnumType = { [key : number]: string };
+
   private _elements: (number | string)[];
   private _keys: string[];
   private _values: number[];
 
-  constructor(enumParam: any) {
+  constructor(enumParam: EnumType) {
     this._elements = Object.keys(enumParam).map(s => enumParam[s]);
     this._keys = this._elements.filter(s => typeof s === 'string') as string[];
     this._values = this._elements.filter(s => typeof s === 'number') as number[];
