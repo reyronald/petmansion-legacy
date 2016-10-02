@@ -1,6 +1,6 @@
-export class EnumUtils {  
-	type EnumType = { [key : number]: string };
+type EnumType = { [key : number]: string };
 
+export class EnumUtils {  
   private _elements: (number | string)[];
   private _keys: string[];
   private _values: number[];
